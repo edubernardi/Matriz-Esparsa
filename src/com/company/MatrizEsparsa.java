@@ -126,22 +126,18 @@ public class MatrizEsparsa {
     }
 
     public double[][] copia(int primLin, int primCol, int quantasLinhas, int quantasColunas) {
-        try {
-            double[][] matrix = new double[quantasLinhas][quantasColunas];
-            int i = 0;
-            int j = 0;
-            for (int linha = primLin; linha < primLin + quantasLinhas; linha++) {
-                j = 0;
-                for (int coluna = primCol; coluna < primCol + quantasColunas; coluna++) {
-                    matrix[i][j] = get(linha, coluna);
-                    j++;
-                }
-                i++;
+        double[][] matrix = new double[quantasLinhas][quantasColunas];
+        for (int i = 0; i < quantasLinhas; i++){
+            for (int j = 0; j < quantasColunas; j++){
+                matrix[i][j] = 0;
             }
-            return matrix;
-        } catch (RuntimeException e) {
-            return null;
         }
+        try {
+            for (int i = 0; i < naoZeros; i++) {
+                matrix[mat[i].getLinha()][mat[i].getColuna()] = mat[i].getValor();
+            }
+        } catch (RuntimeException e) {}
+        return matrix;
     }
 
     public MatrizEsparsa transposta(MatrizEsparsa m) {
@@ -181,8 +177,7 @@ public class MatrizEsparsa {
                     set(Double.parseDouble(valores[0]), Integer.parseInt(valores[1]), Integer.parseInt(valores[2]));
                 }
             }
-        } catch (IOException e) {
-        }
+        } catch (IOException e) {}
     }
 
     public int getTotalLinhas() {

@@ -10,7 +10,7 @@ public class Main {
 	    int sLin, sCol;
 	    double sVal;
         Random r = new Random();
-	    for(int x = 0; x < 10; x++){
+	    for(int x = 0; x < 100; x++){
 	        sLin = r.nextInt(10);
 	        sCol = r.nextInt(10);
 	        sVal = (double) r.nextInt(100000);
