@@ -132,11 +132,11 @@ public class MatrizEsparsa {
                 matrix[i][j] = 0;
             }
         }
-        try {
-            for (int i = 0; i < naoZeros; i++) {
+        for (int i = 0; i < naoZeros; i++) {
+            try {
                 matrix[mat[i].getLinha()][mat[i].getColuna()] = mat[i].getValor();
-            }
-        } catch (RuntimeException e) {}
+            } catch (RuntimeException e) {}
+        }
         return matrix;
     }
 
